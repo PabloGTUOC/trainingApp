@@ -1,7 +1,26 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body, input, button, textarea, select {
+  font-family: 'Roboto', sans-serif;
 }
 
+.App {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;  /* Centers children horizontally */
+  align-items: left;  /* Centers children vertically */
+  background-color: #db21218f;
+  margin: 10px auto 0 auto;  /* top and bottom margin set to 10px, left and right set to auto */
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;  /* Add rounded borders */
+}
+
+.App-p {
+  padding: 5
+  px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,19 +33,57 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  align-items: flex-start; /* Align children to the left */
+  width: 100%;
+  text-align: left; /* Left text alignment for consistency */
+  color: black;
+  margin: 5px auto 0 auto;  /* top and bottom margin set to 10px, left and right set to auto */
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .App-link {
   color: #61dafb;
 }
+
+.App-h1 {
+  color: black;
+  margin: 10px;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.button {
+  font-family: 'Roboto', sans-serif; /* Use Roboto font */
+  background-color: rgba(219, 33, 129, 0.25); /* 25% lighter background */
+  border: 2px solid black; /* Round black borders */
+  border-radius: 10px; /* Rounded corners */
+  padding: 5px 20px; /* Padding inside the button */
+  cursor: pointer; /* Cursor to pointer to indicate it's clickable */
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.2); /* Slight shadow for depth */
+  color: black; /* Text color */
+  font-size: 16px; /* Slightly larger font size for readability */
+  margin: 10px; /* Margin for spacing around the button */
+}
+
+.input {
+  font-family: 'Roboto', sans-serif; /* Use Roboto font */
+  background-color: rgba(219, 33, 129, 0.25); /* 25% lighter background */
+  border: 2px solid black; /* Round black borders */
+  border-radius: 10px; /* Rounded corners */
+  padding: 5px 10px; /* Adjust padding for the input */
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.2); /* Slight shadow for depth */
+  color: black; /* Text color */
+  font-size: 16px; /* Slightly larger font size for readability */
+  margin: 10px; /* Margin for spacing around the button */
+  box-sizing: border-box; /* Include padding and borders in width and height */
+}
+
 
 @keyframes App-logo-spin {
   from {

@@ -1,11 +1,13 @@
 import axios  from "axios";
-
+import { getCurrentUserId } from './auth'; // Import the function
 const SERVER_URL = 'http://localhost:5001';
-
 export const fetchLatestTrainingData = async () => {
     console.log("Attempting to fetch latest training data...");
     try {
-        const response = await axios.get(`${SERVER_URL}/latest-trainings`);
+        const userId = getCurrentUserId();
+        const response = await axios.get(`${SERVER_URL}/latest-trainings`, {
+            params: {userId}
+        });
         console.log("Latest Training Data:", response.data);
         return response.data;
     } catch (error) {
@@ -13,21 +15,23 @@ export const fetchLatestTrainingData = async () => {
         throw error;
     }
 };
-
 export const fetchInitialData = async () => {
     console.log("Attempting to fetch initial training data...");
     try {
-        const response = await axios.get(`${SERVER_URL}/initial-trainings`);
+        const userId = getCurrentUserId();
+        const response = await axios.get(`${SERVER_URL}/initial-trainings`, {
+            params: {userId}
+        });
         console.log("First Training Data:", response.data);
         return response.data;
     } catch (error) {
         console.log("Error fetching initial training data", error);
     }
 };
-
 export const sendTrainingData = async (date, weight) => {
     try {
-        const payload = {date} ;
+        const userId = getCurrentUserId();
+        const payload = {userId, date} ;
         if (weight !== null) {
             payload.weight = weight;
         }

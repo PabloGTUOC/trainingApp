@@ -4,7 +4,6 @@ import { fetchLatestTrainingData, sendTrainingData}  from "./nodeConnection";
 export const Dailyinputs = () => {
     const styles =  {
         width: '100%',
-        textAlign: "left",
         flexWrap: 'wrap',
         color: "black"
     }
@@ -12,7 +11,8 @@ export const Dailyinputs = () => {
     const flexStyle = {
         display: "flex",
         justifyContent: "space-between",
-        alignItems:"center"
+        alignItems: "flex-start",
+        width: "100%"
     }
 
     const [trainingDate, setTrainingDate] = useState(null);
@@ -61,20 +61,30 @@ export const Dailyinputs = () => {
         <div style = {styles}>
             <div style={flexStyle}>
                 <h2>Did you train today?</h2>
-                <button onClick={handleClick}>Yes!!</button>
-                {trainingDate && <p>Date Captured: {trainingDate.toString()}</p>}
+                <button className="button" onClick={handleClick}>Yes!!</button>
+
+            </div>
+            {trainingDate && (
+                <p>You moved your f***g ass on the {trainingDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long' })}</p> // Adjusted message for date
+            )}
+            <div>
             </div>
             <div style={flexStyle}>
                 <input
+                    className="input"
                     type="number"
                     value={weightInput}
                     onChange={handleWeightChange}
                     placeholder="Enter your weight"
                 />
-                <button onClick={handleSaveWeight}>You Fatty!!</button>
-                {savedWeight && <p>Weight: {savedWeight} kg</p>}
-            </div>
+                <button className="button" onClick={handleSaveWeight}>You Fatty!!</button>
 
+            </div>
+            <div>
+                {savedWeight && (
+                    <p>Gosh your {savedWeight} kilos are depressing!</p> // Adjusted message for weight
+                )}
+            </div>
         </div>
     )
 }

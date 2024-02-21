@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import React, { useEffect, useState} from "react";
 import './App.css';
+import {Header} from "./Header";
+import {Loadlastdate} from "./Loadlastdate";
+import {Dailyinputs} from "./Dailyinputs";
+import {Generalstats} from "./Generalstats";
+import { auth}  from "./firebaseConfig";
+import { onAuthStateChanged } from  "firebase/auth"
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    const [user, setUser ] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser); // Set the user if signed in, null otherwise
+        });
+        return () => unsubscribe();
+    }, []);
+
+    return (
+        <div className="App">
+            <Header user={user}/>
+            {user ? (
+                // Show these components only when user is signed in
+                <>
+                    <Loadlastdate/>
+                    <Dailyinputs/>
+                    <Generalstats/>
+                </>
+            ) : (
+                // Optionally, display a welcome message or information about your app here
+                <p className="App-p">Welcome to GoToTheF***gGym APP! <br />Please sign in to track your progress.</p>
+            )}
+        </div>
   );
 }
 
